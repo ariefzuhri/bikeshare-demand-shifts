@@ -4,7 +4,7 @@ A descriptive comparison of demand composition and hourly usage patterns in Wash
 
 ![The Changing Shape of Capital Bikeshare Demand](assets/cover.png)
 
-> 📓 **[View the Analysis Notebook →](notebook.ipynb)**
+> 📓 [**View the Analysis Notebook →**](notebook.ipynb)
 
 ## Overview
 
@@ -26,10 +26,10 @@ The central challenge is therefore to determine how the composition and hourly p
 
 The analysis will provide management with evidence to:
 
-- Refine customer strategy by assessing how rental demand is distributed between casual and registered users and how that composition changed over time.
-- Improve operational planning by identifying hourly demand patterns across working and non-working days and across user types.
-- Guide the timing of resource allocation for bicycle redistribution, staffing, and related operational needs during periods of higher demand.
-- Support longer-term planning by establishing a clearer picture of how the scale and timing of bike-sharing demand evolved as the system grew.
+- **Refine customer strategy** by assessing how rental demand is distributed between casual and registered users and how that composition changed over time.
+- **Improve operational planning** by identifying hourly demand patterns across working and non-working days and across user types.
+- **Guide the timing of resource allocation** for bicycle redistribution, staffing, and related operational needs during periods of higher demand.
+- **Support longer-term planning** by establishing a clearer picture of how the scale and timing of bike-sharing demand evolved as the system grew.
 
 ## Analytical Questions
 
@@ -48,13 +48,13 @@ The dataset files used in this project were obtained from a copy of the original
 
 The dataset is provided at two levels of temporal aggregation:
 
-- `hour.csv`:
+- **`hour.csv`:**
   
   - Aggregated at the hourly level.
   - Contains 17,379 observations.
   - Includes the `hr` variable, representing hour of the day from 0 to 23.
 
-- `day.csv`:
+- **`day.csv`:**
   
   - Aggregated at the daily level.
   - Contains 731 observations.
@@ -72,7 +72,7 @@ The hourly dataset captures intraday variation in bike-sharing demand, enabling 
   
   - `cnt`: Total number of rentals, where `cnt = casual + registered`.
 
-- **Temporal Features**
+- **Temporal features:**
   
   - `dteday`: Date of observation.
   
@@ -100,12 +100,12 @@ The assessment found no explicit missing values in either dataset and no exact o
 
 Several consistency checks were performed:
 
-- Rental-count integrity: `cnt = casual + registered` for every observation in both datasets.
-- Cross-dataset reconciliation: daily totals derived from the hourly dataset matched the corresponding records in the daily dataset for every date.
-- Temporal consistency: the encoded `yr`, `mnth`, and `weekday` values matched the calendar dates.
-- Categorical validity: all categorical variables contained only expected codes.
+- **Rental-count integrity:** `cnt = casual + registered` for every observation in both datasets.
+- **Cross-dataset reconciliation:** daily totals derived from the hourly dataset matched the corresponding records in the daily dataset for every date.
+- **Temporal consistency:** the encoded `yr`, `mnth`, and `weekday` values matched the calendar dates.
+- **Categorical validity:** all categorical variables contained only expected codes.
 - Environmental ranges: normalized `temp`, `atemp`, `hum`, and `windspeed` values remained within the expected 0–1 range.
-- Working-day logic: weekends and holidays were consistently classified as non-working days.
+- **Working-day logic:** weekends and holidays were consistently classified as non-working days.
 
 Daily date coverage was complete across all 731 days from January 1, 2011, through December 31, 2012. However, the hourly dataset contained 17,379 of 17,544 expected date-hour observations, leaving 165 missing hourly records, or 0.94% of expected coverage.
 
@@ -129,8 +129,8 @@ Because the assessment identified no duplicate rows, invalid rental totals, expl
 
 Two preprocessing steps were applied to both datasets:
 
-- Date conversion: `dteday` was converted from a string to a datetime data type to support calendar-based validation, grouping, and feature derivation.
-- Chronological sorting: the hourly dataset was sorted by `dteday` and `hr`, while the daily dataset was sorted by `dteday`, both indexes were then reset.
+- **Date conversion:** `dteday` was converted from a string to a datetime data type to support calendar-based validation, grouping, and feature derivation.
+- **Chronological sorting:** the hourly dataset was sorted by `dteday` and `hr`, while the daily dataset was sorted by `dteday`, both indexes were then reset.
 
 No observations were removed solely because they were statistical outliers, and the 165 absent date-hour combinations were not imputed.
 
@@ -239,11 +239,11 @@ Casual rentals rose strongly from late morning through the afternoon, while regi
 
 ### Conclusion
 
-Capital Bikeshare experienced **substantial demand growth from 2011 to 2012**, while the overall structure of that demand remained remarkably consistent. Total annual rentals increased by **64.88%**, rising from **1.24 million to 2.05 million**. Both casual and registered rentals increased, but growth was stronger among registered users, whose share of total demand rose from **80.11% to 81.81%**. This indicates that system expansion was broad-based but increasingly concentrated among registered riders. Demand was also higher in 2012 in every corresponding month.
+Capital Bikeshare experienced substantial demand growth from 2011 to 2012, while the overall structure of that demand remained remarkably consistent. Total annual rentals increased by 64.88%, rising from 1.24 million to 2.05 million. Both casual and registered rentals increased, but growth was stronger among registered users, whose share of total demand rose from 80.11% to 81.81%. This indicates that system expansion was broad-based but increasingly concentrated among registered riders. Demand was also higher in 2012 in every corresponding month.
 
-Hourly patterns reinforce the same conclusion: **2012 brought greater demand intensity rather than a fundamental change in when or how the system was used**. The overall peak remained at **5:00 PM** in both years, increasing from roughly **350 to 573 average rentals per hour**. Registered users continued to produce pronounced morning and evening peaks, particularly on working days, whereas casual users followed a smoother daytime profile. Non-working days retained a broad midday-to-afternoon pattern rather than the sharper commute-oriented peaks observed on working days.
+Hourly patterns reinforce the same conclusion: 2012 brought greater demand intensity rather than a fundamental change in when or how the system was used. The overall peak remained at 5:00 PM in both years, increasing from roughly 350 to 573 average rentals per hour. Registered users continued to produce pronounced morning and evening peaks, particularly on working days, whereas casual users followed a smoother daytime profile. Non-working days retained a broad midday-to-afternoon pattern rather than the sharper commute-oriented peaks observed on working days.
 
-These findings show that **Capital Bikeshare grew considerably in scale between 2011 and 2012 without materially altering its core demand structure**. Registered riders became slightly more dominant, and the magnitude of hourly demand increased across the day, but the principal user-type and working-versus-non-working-day patterns remained stable. In short, the system expanded around an already-established pattern of use rather than transitioning to a fundamentally different demand profile.
+These findings show that Capital Bikeshare grew considerably in scale between 2011 and 2012 without materially altering its core demand structure. Registered riders became slightly more dominant, and the magnitude of hourly demand increased across the day, but the principal user-type and working-versus-non-working-day patterns remained stable. In short, the system expanded around an already-established pattern of use rather than transitioning to a fundamentally different demand profile.
 
 ## Business Recommendations
 
@@ -282,7 +282,7 @@ These findings show that **Capital Bikeshare grew considerably in scale between 
 
 - **KaggleHub:** Used to programmatically download the dataset.
 
-- **DataFrame Viewer**: Used to inspect tabular data in a DataFrame.
+- **DataFrame Viewer:** Used to inspect tabular data in a DataFrame.
 
 ## Author and License
 
