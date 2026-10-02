@@ -15,14 +15,14 @@ def print_duplicate_count(df):
     return duplicate_count
 
 
-def save_fig(plt, filename):
+def save_fig(fig, filename):
     """Save a Matplotlib figure as a high-resolution PNG image.
 
-    Creates the ``report`` directory if it does not already exist.
+    Creates the ``figures`` directory if it does not already exist.
 
     Args:
         fig (matplotlib.figure.Figure): The Matplotlib figure to save.
         filename (str): Output filename without the ``.png`` extension.
     """
     Path("figures").mkdir(exist_ok=True)
-    plt.savefig(f"figures/{filename}.png", dpi=300, bbox_inches="tight")
+    fig.savefig(f"figures/{filename}.png", dpi=300, bbox_inches="tight")
